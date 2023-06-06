@@ -12,7 +12,7 @@ class PeraButton extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: Container(
         height: 50.0,
-        width: 327.0,
+        width: 370.0,
         decoration: BoxDecoration(
             gradient: gradient, borderRadius: BorderRadius.circular(10.0)),
         child: MaterialButton(

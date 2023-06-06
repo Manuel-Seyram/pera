@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topCenter,
+                  begin: Alignment.topLeft,
                   end: Alignment.bottomCenter,
                   stops: [
                 0.1,
@@ -59,7 +59,7 @@ class Home extends StatelessWidget {
   }
 
   _cardtype(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const SelectCardType()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const SelectCardType()));
   }
 }

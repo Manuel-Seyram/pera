@@ -11,7 +11,7 @@ class SelectCardType extends StatelessWidget {
         automaticallyImplyLeading: false,
         forceMaterialTransparency: true,
         title: const Center(
-          child:  Text(
+          child: Text(
             'Select Card Type',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
@@ -50,39 +50,46 @@ class SelectCardType extends StatelessWidget {
               _cardButton(
                   buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
                   buttonText: 'Credit or Debit Card',
-                  click: (){},
+                  click: () {},
                   textColor: Colors.white,
                   context: context),
-                  const SizedBox(height: 10,),
-                  _cardButton(
+              const SizedBox(
+                height: 10,
+              ),
+              _cardButton(
                   buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
                   buttonText: 'National Identification Card',
                   click: () {},
                   textColor: Colors.white,
                   context: context),
-                  const SizedBox(height: 10,),
-                  _cardButton(
+              const SizedBox(
+                height: 10,
+              ),
+              _cardButton(
                   buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
                   buttonText: 'Passport',
                   click: () {},
                   textColor: Colors.white,
                   context: context),
-                  const SizedBox(height: 10,),
-                  _cardButton(
+              const SizedBox(
+                height: 10,
+              ),
+              _cardButton(
                   buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
                   buttonText: 'Driver License',
                   click: () {},
                   textColor: Colors.white,
                   context: context),
-                  const Spacer(),
-                  const Spacer(),
-                  const Spacer(),
+              const Spacer(),
+              const Spacer(),
+              const Spacer(),
             ],
           ),
         ),
       ),
     );
   }
+
   Widget _cardButton(
       {required Color buttonColor,
       required String buttonText,
@@ -92,11 +99,9 @@ class SelectCardType extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5.0),
       child: Container(
-         width: 327.0,
+        width: 327.0,
         height: 50.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40.0)
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(40.0)),
         child: MaterialButton(
           elevation: 1.0,
           color: buttonColor,
@@ -112,4 +117,3 @@ class SelectCardType extends StatelessWidget {
     );
   }
 }
-
