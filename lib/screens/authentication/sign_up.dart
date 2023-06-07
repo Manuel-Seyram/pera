@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pera/screens/authentication/sign_up.dart';
-import 'package:pera/screens/homepage/home.dart';
-import 'package:pera/screens/widgets/pera_button.dart';
+import 'package:pera/screens/authentication/registration_successful.dart';
+import 'package:pera/screens/authentication/sign_in.dart';
 
-class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+import '../widgets/pera_button.dart';
+
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +41,47 @@ class SignIn extends StatelessWidget {
             const Spacer(),
             const Align(
                 alignment: Alignment.topLeft,
-                widthFactor: 6.0,
-                child: Text('Sign In',
+                widthFactor: 5.4,
+                child: Text('Sign Up',
                     style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w700,
                         color: Colors.white))),
             const Spacer(),
+            const Align(
+                alignment: Alignment.topLeft,
+                widthFactor: 9.9,
+                child: Text('Name',
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white))),
+            const Align(
+              alignment: Alignment.topLeft,
+              widthFactor: 1.0,
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextField(
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.name,
+                  style: TextStyle(
+                    decorationColor: Colors.white,
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      hintText: 'John Snowman',
+                      hintStyle: TextStyle(color: Colors.white12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                      labelStyle: TextStyle(color: Colors.white)),
+                ),
+              ),
+            ),
             const Align(
                 alignment: Alignment.topLeft,
                 widthFactor: 10.7,
@@ -95,6 +130,40 @@ class SignIn extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
+                  textInputAction: TextInputAction.next,
+                  obscureText: true,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    decorationColor: Colors.white,
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      hintText: '**************',
+                      hintStyle: TextStyle(color: Colors.white12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      )),
+                ),
+              ),
+            ),
+            const Align(
+                alignment: Alignment.topLeft,
+                widthFactor: 3.2,
+                child: Text('Confirm Password',
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white))),
+            const Align(
+              alignment: Alignment.topLeft,
+              widthFactor: 1.0,
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextField(
                   textInputAction: TextInputAction.done,
                   obscureText: true,
                   keyboardType: TextInputType.text,
@@ -115,36 +184,20 @@ class SignIn extends StatelessWidget {
                 ),
               ),
             ),
-            PeraButton('Sign In', () {
-              _toHome(context);
+            PeraButton('Sign Up', () {
+              _toOnboarding(context);
             }, _gradient()),
             const SizedBox(
               height: 20.0,
             ),
             Center(
               child: GestureDetector(
-                onTap: () {},
-                child: const Text(
-                  'Forgot your password?',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12.0,
-                      decoration: TextDecoration.underline),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5.0,
-            ),
-            Center(
-              child: GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const SignUp()));
+                      MaterialPageRoute(builder: (context) => const SignIn()));
                 },
                 child: const Text(
-                  'Dont have an account? Sign Up',
+                  'Already have an account? Sign In',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
@@ -164,9 +217,9 @@ class SignIn extends StatelessWidget {
     ));
   }
 
-  _toHome(BuildContext context) {
+  _toOnboarding(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+    context, MaterialPageRoute(builder: (context) => const SuccessfulRegistration()));
   }
 
   Gradient _gradient() {
