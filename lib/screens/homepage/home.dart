@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pera/screens/homepage/select_card_type.dart';
 
+import '../credit card/widgets/card_list.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -35,24 +37,30 @@ class Home extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomCenter,
-                  stops: [
-                0.1,
-                0.9
-              ],
-                  colors: [
-                Color.fromRGBO(17, 16, 23, 1),
-                Color.fromRGBO(9, 3, 32, 1),
-              ])),
-          child: const Column(
-            children: [],
-          ),
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomCenter,
+                      stops: [
+                    0.1,
+                    0.9
+                  ],
+                      colors: [
+                    Color.fromRGBO(17, 16, 23, 1),
+                    Color.fromRGBO(9, 3, 32, 1),
+                  ])),
+              child: const Column(
+                children: [
+                  CardList(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -60,6 +68,6 @@ class Home extends StatelessWidget {
 
   _cardtype(BuildContext context) {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const SelectCardType()));
+        MaterialPageRoute(builder: (context) => const SelectCardType(buttonText: '',)));
   }
 }
