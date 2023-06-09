@@ -10,7 +10,7 @@ class CardListBloc {
   final BehaviorSubject<List<CardResults>> _cardsCollection =
       BehaviorSubject<List<CardResults>>();
 
-   List<CardResults> _cardResults;
+  List<CardResults> _cardResults;
 
   //Retrieve data from Stream
   Stream<List<CardResults>> get cardList => _cardsCollection.stream;
@@ -25,7 +25,8 @@ class CardListBloc {
     _cardsCollection.sink.add(_cardResults);
   }
 
-  CardListBloc() {
+  CardListBloc(this._cardResults) {
+
     initialData();
   }
 
@@ -39,4 +40,4 @@ class CardListBloc {
   }
 }
 
-final cardListBloc = CardListBloc();
+final cardListBloc = CardListBloc([]);

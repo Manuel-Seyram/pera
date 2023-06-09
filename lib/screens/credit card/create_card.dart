@@ -21,7 +21,7 @@ class CardCreate extends StatefulWidget {
 }
 
 class _CardCreate extends State<CardCreate> {
- GlobalKey<FlipCardState> animatedStateKey = GlobalKey<FlipCardState>();
+  GlobalKey<FlipCardState> animatedStateKey = GlobalKey<FlipCardState>();
 
   final FocusNode _focusNode = FocusNode();
 
@@ -43,13 +43,11 @@ class _CardCreate extends State<CardCreate> {
 
   @override
   Widget build(BuildContext context) {
-   CardBloc? bloc = BlocProvider.of<CardBloc>(context);
+    CardBloc? bloc = BlocProvider.of<CardBloc>(context);
 
     final creditCard = Padding(
       padding: const EdgeInsets.only(top: 6.0),
-      child: Card(
-        color: Colors.grey,
-        elevation: 0.0,
+      child: Container(
         margin: const EdgeInsets.fromLTRB(15.0, 2.0, 15.0, 0.0),
         child: FlipCard(
           key: animatedStateKey,
@@ -63,15 +61,23 @@ class _CardCreate extends State<CardCreate> {
         stream: bloc!.cardHolderName,
         builder: (context, snapshot) {
           return TextField(
+            textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.characters,
+            showCursor: false,
+            style: const TextStyle(
+              decorationColor: Colors.white,
+              color: Colors.white,
+            ),
             onChanged: bloc.changeCardHolderName,
             keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              filled: true,
-              fillColor: Colors.white,
-              hintText: 'Cardholder Name',
-              errorText: snapshot.error.toString(),
+            decoration: const InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white)),
+              hintText: 'Card Holder Name',
+              hintStyle: TextStyle(color: Colors.white12),
+              //errorText: snapshot.error.toString(),
             ),
           );
         });
@@ -82,6 +88,12 @@ class _CardCreate extends State<CardCreate> {
           stream: bloc.cardNumber,
           builder: (context, snapshot) {
             return TextField(
+              textInputAction: TextInputAction.next,
+              showCursor: false,
+              style: const TextStyle(
+                decorationColor: Colors.white,
+                color: Colors.white,
+              ),
               onChanged: bloc.changeCardNumber,
               keyboardType: TextInputType.number,
               maxLength: 19,
@@ -92,13 +104,14 @@ class _CardCreate extends State<CardCreate> {
                   separator: ' ',
                 ),
               ],
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Colors.white,
-                hintText: 'Card Number',
-                counterText: '',
-                errorText: snapshot.error.toString(),
+              decoration: const InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                hintText: 'Card  Number',
+                hintStyle: TextStyle(color: Colors.white12),
+                //errorText: snapshot.error.toString(),
               ),
             );
           }),
@@ -108,19 +121,26 @@ class _CardCreate extends State<CardCreate> {
       stream: bloc.cardMonth,
       builder: (context, snapshot) {
         return SizedBox(
-          width: 85.0,
+          width: 90.0,
           child: TextField(
+            textInputAction: TextInputAction.next,
+            showCursor: false,
+            style: const TextStyle(
+              decorationColor: Colors.white,
+              color: Colors.white,
+            ),
             onChanged: bloc.changeCardMonth,
             keyboardType: TextInputType.number,
             maxLength: 2,
             maxLengthEnforcement: MaxLengthEnforcement.enforced,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              filled: true,
-              fillColor: Colors.white,
+            decoration: const InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white)),
               hintText: 'MM',
-              counterText: '',
-              errorText: snapshot.error.toString(),
+              hintStyle: TextStyle(color: Colors.white12),
+              //errorText: snapshot.error.toString(),
             ),
           ),
         );
@@ -131,19 +151,26 @@ class _CardCreate extends State<CardCreate> {
         stream: bloc.cardYear,
         builder: (context, snapshot) {
           return SizedBox(
-            width: 120.0,
+            width: 130.0,
             child: TextField(
+              textInputAction: TextInputAction.next,
+              showCursor: false,
+              style: const TextStyle(
+                decorationColor: Colors.white,
+                color: Colors.white,
+              ),
               onChanged: bloc.changeCardYear,
               keyboardType: TextInputType.number,
               maxLength: 4,
               maxLengthEnforcement: MaxLengthEnforcement.enforced,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Colors.white,
+              decoration: const InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
                 hintText: 'YYYY',
-                counterText: '',
-                errorText: snapshot.error.toString(),
+                hintStyle: TextStyle(color: Colors.white12),
+                //errorText: snapshot.error.toString(),
               ),
             ),
           );
@@ -153,20 +180,28 @@ class _CardCreate extends State<CardCreate> {
         stream: bloc.cardCvv,
         builder: (context, snapshot) {
           return SizedBox(
-            width: 85.0,
+            width: 90.0,
             child: TextField(
+              textInputAction: TextInputAction.done,
+              showCursor: false,
+              style: const TextStyle(
+                decorationColor: Colors.white,
+                color: Colors.white,
+              ),
               focusNode: _focusNode,
               onChanged: bloc.changeCardCvv,
               keyboardType: TextInputType.number,
               maxLength: 3,
               maxLengthEnforcement: MaxLengthEnforcement.enforced,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  filled: true,
-                  fillColor: Colors.white,
-                  counterText: '',
-                  hintText: 'CVV',
-                  errorText: snapshot.error.toString()),
+              decoration: const InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                hintText: 'CVV',
+                hintStyle: TextStyle(color: Colors.white12),
+                //errorText: snapshot.error.toString(),
+              ),
             ),
           );
         });
@@ -177,9 +212,13 @@ class _CardCreate extends State<CardCreate> {
         return SizedBox(
           width: MediaQuery.of(context).size.width - 40,
           child: Container(
-            color: Colors.blue,
+            height: 50.0,
+            width: 370.0,
+            decoration: BoxDecoration(
+                gradient: _gradient(),
+                borderRadius: BorderRadius.circular(10.0)),
             child: MaterialButton(
-              color: Colors.lightBlue,
+              padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
               onPressed: snapshot.hasData
                   ? () {
                       var blocProviderCardWallet = BlocProvider(
@@ -203,58 +242,98 @@ class _CardCreate extends State<CardCreate> {
     );
 
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           automaticallyImplyLeading: true,
           forceMaterialTransparency: true,
-          title: const Center(
-            child: Text(
-              'Create Card',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
+          title: const Text(
+            'Create Card',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
+          titleSpacing: 100.0,
         ),
-        backgroundColor: Colors.grey,
-        body: ListView(
-          itemExtent: 750.0,
-          padding: const EdgeInsets.only(top: 10.0),
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 3,
-                  child: creditCard,
-                ),
-                Expanded(
-                  flex: 6,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomCenter,
+                        stops: [
+                      0.1,
+                      0.9
+                    ],
+                        colors: [
+                      Color.fromRGBO(17, 16, 23, 1),
+                      Color.fromRGBO(9, 3, 32, 1),
+                    ])),
+                child: ListView(
+                  itemExtent: 750.0,
+                  padding: const EdgeInsets.only(top: 10.0),
+                  children: <Widget>[
+                    Column(
                       children: <Widget>[
-                        const SizedBox(height: 8.0),
-                        cardHolderName,
-                        cardNumber,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            cardMonth,
-                            const SizedBox(width: 16.0),
-                            cardYear,
-                            const SizedBox(width: 16.0),
-                            cardVerificationValue,
-                          ],
+                        const SizedBox(
+                          height: 90.0,
                         ),
-                        const SizedBox(height: 20.0),
-                        cardColors(bloc),
-                        const SizedBox(height: 50.0),
+                        Flexible(
+                          flex: 4,
+                          child: creditCard,
+                        ),
+                        Flexible(
+                          flex: 6,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              children: <Widget>[
+                                const SizedBox(height: 8.0),
+                                cardHolderName,
+                                cardNumber,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    cardMonth,
+                                    const SizedBox(width: 12.0),
+                                    cardYear,
+                                    const SizedBox(width: 16.0),
+                                    cardVerificationValue,
+                                  ],
+                                ),
+                                const SizedBox(height: 20.0),
+                                cardColors(bloc),
+                                const SizedBox(height: 30.0),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10.0),
                         saveCard,
                       ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ));
+  }
+
+  Gradient _gradient() {
+    return const LinearGradient(
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
+        stops: [
+          0.2,
+          0.9
+        ],
+        colors: [
+          Color.fromRGBO(255, 218, 21, 0.8),
+          Color.fromRGBO(23, 154, 195, 0.6),
+        ]);
   }
 
   Widget cardColors(CardBloc bloc) {

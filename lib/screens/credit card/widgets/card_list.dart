@@ -17,14 +17,18 @@ class CardList extends StatelessWidget {
       builder: (context, snapshot) {
         return Column(
           children: <Widget>[
-            const SizedBox(height: 400.0,),
+            const SizedBox(height: 200.0,),
             !snapshot.hasData
                 ? const Center(child: CircularProgressIndicator(strokeWidth: 2.0, color: Colors.white,))
                 : SizedBox(
-                    height: screenSize.height * 0.8,
+                    height: screenSize.height * 0.6,
+                    width: screenSize.width * 0.8,
                     child: AppinioSwiper(
                       cardsCount: snapshot.data!.length,
-                      
+                      swipeOptions: AppinioSwipeOptions.vertical,
+                      loop: true,
+                      allowUnswipe: false,
+                      direction: AppinioSwiperDirection.top,
                       cardsBuilder: (BuildContext context, int index) {
                         return CardFrontList(
                           cardModel: snapshot.data![index],

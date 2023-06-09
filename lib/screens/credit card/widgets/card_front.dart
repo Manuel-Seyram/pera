@@ -41,7 +41,8 @@ class CardFront extends StatelessWidget {
                       .replaceAll(RegExp(r'\s+\b|\b\s'), '')
                       .substring(12)
                   : '0000',
-              style: const TextStyle(color: Colors.white, fontSize: 8.0),
+              style: const TextStyle(color: Colors.white, fontSize: 8.0,
+                  fontWeight: FontWeight.w700),
             );
           },
         ));
@@ -55,16 +56,18 @@ class CardFront extends StatelessWidget {
             children: <Widget>[
               Text(
                 'valid',
-                style: TextStyle(color: Colors.white, fontSize: 8.0),
+                style: TextStyle(color: Colors.white, fontSize: 8.0,
+                    fontWeight: FontWeight.w500),
               ),
               Text(
                 'thru',
-                style: TextStyle(color: Colors.white, fontSize: 8.0),
+                style: TextStyle(color: Colors.white, fontSize: 8.0,
+                    fontWeight: FontWeight.w500),
               )
             ],
           ),
           const SizedBox(
-            width: 5.0,
+            width: 10.0,
           ),
           StreamBuilder(
             stream: bloc?.cardMonth,
@@ -74,6 +77,7 @@ class CardFront extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16.0,
+                  fontWeight: FontWeight.w400
                 ),
               );
             },
@@ -85,7 +89,7 @@ class CardFront extends StatelessWidget {
                   snapshot.hasData && snapshot.data!.length > 2
                       ? '/${snapshot.data!.substring(2)}'
                       : '/00',
-                  style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                  style: const TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.w700),
                 );
               })
         ],
@@ -97,8 +101,8 @@ class CardFront extends StatelessWidget {
       child: StreamBuilder(
         stream: bloc?.cardHolderName,
         builder: (context, snapshot) => Text(
-          snapshot.data ?? 'CARDHOLDER NAME',
-          style: const TextStyle(color: Colors.white, fontSize: 18.0),
+          snapshot.data ?? 'CARD HOLDER NAME',
+          style: const TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w700),
         ),
       ),
     );

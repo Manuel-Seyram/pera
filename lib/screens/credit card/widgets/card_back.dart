@@ -31,9 +31,12 @@ class CardBack extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
+                      const SizedBox(
+                        width: 15.0,
+                      ),
                       const Image(
                         image: AssetImage('assets/card_band.jpg'),
-                        width: 200.0,
+                        width: 220.0,
                       ),
                       const SizedBox(
                         width: 15.0,

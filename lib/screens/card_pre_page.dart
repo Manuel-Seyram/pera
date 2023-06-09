@@ -5,7 +5,6 @@ import '../blocs/card/bloc_provider.dart';
 import '../blocs/card/card_bloc.dart';
 import 'credit card/widgets/card_front.dart';
 
-
 class CardPre extends StatefulWidget {
   const CardPre({super.key});
 
@@ -17,8 +16,8 @@ class CardPre extends StatefulWidget {
 class _CardPre extends State<CardPre> with TickerProviderStateMixin {
   late AnimationController rotateController;
   late AnimationController opacityController;
-   late Animation<double> animation;
-    late Animation<double> opacityAnimation;
+  late Animation<double> animation;
+  late Animation<double> opacityAnimation;
 
   @override
   void initState() {
@@ -29,8 +28,8 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
     opacityController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 2000));
 
-    CurvedAnimation curvedAnimation = CurvedAnimation(
-        parent: opacityController, curve: Curves.fastOutSlowIn);
+    CurvedAnimation curvedAnimation =
+        CurvedAnimation(parent: opacityController, curve: Curves.fastOutSlowIn);
 
     animation = Tween(begin: -2.0, end: -3.15).animate(rotateController);
     opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(curvedAnimation);
@@ -38,7 +37,8 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
     opacityAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         bloc?.saveCard();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Home()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const Home()));
       }
     });
 
@@ -57,19 +57,36 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          forceMaterialTransparency: true,
-          title: const Center(
-            child: Text(
-              '',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
+        title: const Center(
+          child: Text(
+            '',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
-        body: Center(
+      ),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomCenter,
+                stops: [
+              0.1,
+              0.9
+            ],
+                colors: [
+              Color.fromRGBO(17, 16, 23, 1),
+              Color.fromRGBO(9, 3, 32, 1),
+            ])),
+        child: Center(
           child: Column(
             children: <Widget>[
+              const SizedBox(height: 50.0,),
               Padding(
                 padding: const EdgeInsets.only(top: 50.0),
                 child: AnimatedBuilder(
@@ -87,21 +104,21 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
                     }),
               ),
               const SizedBox(
-                height: 150.0,
+                height: 100.0,
               ),
               const CircularProgressIndicator(
                 strokeWidth: 2.0,
-                backgroundColor: Colors.white,
+                color: Colors.white,
               ),
               const SizedBox(
                 height: 30.0,
               ),
-                FadeTransition(
+              FadeTransition(
                 opacity: opacityAnimation,
                 child: const Text(
-                  'Card Added',
+                  'Adding Card',
                   style: TextStyle(
-                    color: Colors.lightBlue,
+                    color: Colors.white,
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -109,6 +126,8 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
