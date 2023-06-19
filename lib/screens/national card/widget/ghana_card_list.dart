@@ -1,19 +1,20 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/material.dart';
 
-import '../../../blocs/card/card_list_block.dart';
-import '../../../models/credit card/card_model.dart';
-import 'card_front_list.dart';
+import '../../../blocs/national id/ghana_card_list_bloc.dart';
+import '../../../models/national id/ghana_card_model.dart';
+import 'ghana_card_front_list.dart';
 
- class CardList extends StatelessWidget {
-  const CardList({super.key});
+
+  class GhanaCardList extends StatelessWidget {
+    const GhanaCardList({super.key});
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return StreamBuilder<List<CardResults>>(
-      stream: cardListBloc.cardList,
+    return StreamBuilder<List<GhanaCardResults>>(
+      stream: ghanacardListBloc.ghanacardList,
       builder: (context, snapshot) {
         return Column(
           children: <Widget>[
@@ -38,8 +39,8 @@ import 'card_front_list.dart';
                             allowUnswipe: false,
                             direction: AppinioSwiperDirection.top,
                             cardsBuilder: (BuildContext context, int index) {
-                              return CardFrontList(
-                                cardModel: snapshot.data![index],
+                              return GhanaCardFrontList(
+                                ghanacardModel: snapshot.data![index],
                               );
                             },
                           )),

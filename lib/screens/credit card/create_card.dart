@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pera/screens/card_pre_page.dart';
+import 'package:pera/screens/credit%20card/card_pre_page.dart';
 
 import '../../animations/card_animation.dart';
-import '../../blocs/card/bloc_provider.dart';
+import '../../blocs/bloc_provider.dart';
 import '../../blocs/card/card_bloc.dart';
 import '../../helpers/card_colors.dart';
 import '../../helpers/formatters.dart';

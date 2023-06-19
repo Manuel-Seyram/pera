@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pera/screens/homepage/select_card_type.dart';
 
-import '../credit card/widgets/card_list.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
-
+   const Home({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,9 +53,7 @@ class Home extends StatelessWidget {
                     Color.fromRGBO(9, 3, 32, 1),
                   ])),
               child: const Column(
-                children: [
-                  CardList(),
-                ],
+                
               ),
             ),
           ],
@@ -67,7 +63,11 @@ class Home extends StatelessWidget {
   }
 
   _cardtype(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const SelectCardType(buttonText: '',)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const SelectCardType(
+                  buttonText: '',
+                )));
   }
 }

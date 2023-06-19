@@ -4,7 +4,7 @@ import '../../helpers/card_colors.dart';
 import '../../models/credit card/card_color_model.dart';
 import '../../models/credit card/card_model.dart';
 import './validators.dart';
-import 'bloc_provider.dart';
+import '../bloc_provider.dart';
 import 'card_list_block.dart';
 
 

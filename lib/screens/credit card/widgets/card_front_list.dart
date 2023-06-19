@@ -20,7 +20,7 @@ class CardFrontList extends StatelessWidget {
             height: 32.0,
           ),
         ),
-         Padding(
+        Padding(
           padding: const EdgeInsets.only(right: 52.0),
           child: Text(
             cardModel.cardType,

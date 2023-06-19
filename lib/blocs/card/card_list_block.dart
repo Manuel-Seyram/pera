@@ -12,7 +12,7 @@ class CardListBloc {
 
   List<CardResults> _cardResults;
 
-  //Retrieve data from Stream
+  //Retrieve data from Stream               
   Stream<List<CardResults>> get cardList => _cardsCollection.stream;
 
   void initialData() async {

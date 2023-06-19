@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pera/screens/credit%20card/create_card.dart';
 
-import '../../blocs/card/bloc_provider.dart';
+import '../../blocs/bloc_provider.dart';
 import '../../blocs/card/card_bloc.dart';
+import '../../blocs/national id/ghana_card_bloc.dart';
+import '../national card/create_national_card.dart';
 
 class SelectCardType extends StatelessWidget {
   final String buttonText;
@@ -57,7 +59,7 @@ class SelectCardType extends StatelessWidget {
                   const Spacer(),
                   _cardButton(
                       buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
-                      buttonText: 'Credit or Debit Card',
+                      buttonText: 'Credit Card',
                       click: () {
                          var blocProviderCardCreate = BlocProvider(
                           bloc: CardBloc(),
@@ -77,7 +79,17 @@ class SelectCardType extends StatelessWidget {
                   _cardButton(
                       buttonColor: const Color.fromRGBO(32, 28, 48, 1.0),
                       buttonText: 'National Identification Card',
-                      click: () {},
+                      click: () {
+                         var blocProviderCardCreate = BlocProvider(
+                          bloc: GhanaCardBloc(),
+                          child: const GhanaCardCreate(),
+                        );
+                        blocProviderCardCreate.bloc.selectCardType(buttonText);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => blocProviderCardCreate));
+                      },
                       textColor: Colors.white,
                       context: context),
                   const SizedBox(

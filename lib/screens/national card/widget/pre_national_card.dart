@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:pera/screens/homepage/home.dart';
 
-import '../blocs/card/bloc_provider.dart';
-import '../blocs/card/card_bloc.dart';
-import 'credit card/widgets/card_front.dart';
+import '../../../blocs/bloc_provider.dart';
+import '../../../blocs/national id/ghana_card_bloc.dart';
+import 'ghana_card_front.dart';
 
-class CardPre extends StatefulWidget {
-  const CardPre({super.key});
+
+
+class GhanaCardPre extends StatefulWidget {
+  const GhanaCardPre({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _CardPre createState() => _CardPre();
+  _GhanaCardPre createState() => _GhanaCardPre();
 }
 
-class _CardPre extends State<CardPre> with TickerProviderStateMixin {
+class _GhanaCardPre extends State<GhanaCardPre> with TickerProviderStateMixin {
   late AnimationController rotateController;
   late AnimationController opacityController;
   late Animation<double> animation;
@@ -22,7 +24,7 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    final CardBloc? bloc = BlocProvider.of<CardBloc>(context);
+    final GhanaCardBloc? bloc = BlocProvider.of<GhanaCardBloc>(context);
     rotateController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     opacityController = AnimationController(
@@ -36,7 +38,7 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
 
     opacityAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        bloc?.saveCard();
+        bloc?.saveGhanaCard();
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => const Home()));
       }
@@ -86,7 +88,9 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
         child: Center(
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 50.0,),
+              const SizedBox(
+                height: 50.0,
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 50.0),
                 child: AnimatedBuilder(
@@ -94,7 +98,7 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
                     child: SizedBox(
                       width: screenSize.width / 1.6,
                       height: screenSize.height / 2.2,
-                      child: const CardFront(rotatedTurnsValue: -3),
+                      child: const GhanaCardFront(rotatedTurnsValue: -3),
                     ),
                     builder: (context, widget) {
                       return Transform.rotate(
@@ -116,7 +120,7 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
               FadeTransition(
                 opacity: opacityAnimation,
                 child: const Text(
-                  'Adding Card',
+                  'Adding Ghana Card',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
