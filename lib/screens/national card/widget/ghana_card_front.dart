@@ -255,7 +255,7 @@ class GhanaCardFront extends StatelessWidget {
     for (var i = 0; i < cardNumber.length; i++) {
       numberList.add(
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0.0),
           child: Text(
             cardNumber[i],
             style: const TextStyle(color: Colors.white, fontSize: 16),

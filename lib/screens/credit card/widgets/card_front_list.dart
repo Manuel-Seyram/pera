@@ -38,7 +38,8 @@ class CardFrontList extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _buildDots(),
+          _formatCardNumber(cardModel.cardNumber)
+              
         ],
       ),
     );
@@ -107,37 +108,29 @@ class CardFrontList extends StatelessWidget {
         ));
   }
 
-  Widget _buildDots() {
-    List<Widget> dotList = <Widget>[];
+   Widget _formatCardNumber(String cardNumber) {
+    cardNumber = cardNumber.replaceAll(RegExp(r'\s+\b|\b\s'), '');
+    List<Widget> numberList = <Widget>[];
     var counter = 0;
-    for (var i = 0; i < 12; i++) {
+    for (var i = 0; i < cardNumber.length; i++) {
       counter += 1;
-      dotList.add(
+      numberList.add(
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 3.0),
-          child: Container(
-            width: 6.0,
-            height: 6.0,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
+          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          child: Text(
+            cardNumber[i],
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       );
       if (counter == 4) {
         counter = 0;
-        dotList.add(const SizedBox(width: 60.0));
+        numberList.add(const SizedBox(width: 26.0));
       }
     }
-    dotList.add(_buildNumbers());
-    return Row(children: dotList);
-  }
-
-  Widget _buildNumbers() {
-    return Text(
-      cardModel.cardNumber.substring(12),
-      style: const TextStyle(color: Colors.white),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: numberList,
     );
   }
 }

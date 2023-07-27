@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pera/screens/homepage/home.dart';
 
 import '../../../blocs/bloc_provider.dart';
 import '../../../blocs/national id/ghana_card_bloc.dart';
+import '../../homepage/ghana_card_home.dart';
 import 'ghana_card_front.dart';
-
-
 
 class GhanaCardPre extends StatefulWidget {
   const GhanaCardPre({super.key});
@@ -39,8 +37,8 @@ class _GhanaCardPre extends State<GhanaCardPre> with TickerProviderStateMixin {
     opacityAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         bloc?.saveGhanaCard();
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Home()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const GhanaCardHome()));
       }
     });
 

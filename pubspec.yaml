@@ -73,6 +73,7 @@ flutter:
     - assets/card_band.jpg
     - assets/chip_gold.png
     - assets/ghana_card.png
+    - assets/home-icon-credit-card.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

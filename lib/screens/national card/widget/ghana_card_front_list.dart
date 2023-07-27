@@ -10,52 +10,177 @@ class GhanaCardFrontList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const cardLogo = Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
+        Row(
+          children: [
+            SizedBox(
+              width: 10.0,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0, right: 25.0),
+              child: Image(
+                image: AssetImage('assets/ghana_card.png'),
+                width: 65.0,
+                height: 32.0,
+              ),
+            ),
+            SizedBox(
+              width: 220,
+            ),
+            GhanaCardChip()
+          ],
+        ),
+      ],
+    );
+
+    final cardline1 = Row(
+      children: [
         Padding(
-          padding: EdgeInsets.only(top: 25.0, right: 52.0),
-          child: Image(
-            image: AssetImage('assets/ghana_card.png'),
-            width: 65.0,
-            height: 32.0,
+          padding: const EdgeInsets.only(top: 15.0, left: 12.0),
+          child: Text(
+            ghanacardModel.cardHolderName,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700),
+          ),
+        ),
+        const SizedBox(
+          width: 50,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                ghanacardModel.nationality,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700),
+              ),
+            ],
           ),
         ),
       ],
     );
 
-    final cardValidThru = Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Column(
-              children: <Widget>[
-                Text(
-                  'valid',
-                  style: TextStyle(color: Colors.white, fontSize: 8.0),
-                ),
-                Text(
-                  'thru',
-                  style: TextStyle(color: Colors.white, fontSize: 8.0),
-                ),
-              ],
-            ),
-            const SizedBox(
-              width: 5.0,
-            ),
-            Text(
-              ghanacardModel.nationality,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0),
-            ),
-          ],
-        ));
+    final cardline2 = Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0, left: 12.0),
+          child: Text(
+            ghanacardModel.dob,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700),
+          ),
+        ),
+        const SizedBox(
+          width: 60,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                ghanacardModel.sex,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(
+          width: 60,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                ghanacardModel.height,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
 
-    final ghanacardOwner = Padding(
-      padding: const EdgeInsets.only(top: 15.0, left: 50.0),
-      child: Text(
-        ghanacardModel.cardHolderName,
-        style: const TextStyle(color: Colors.white, fontSize: 18.0),
-      ),
+    final cardline3 = Row(
+      children: [
+        Padding(
+            padding: const EdgeInsets.only(top: 15.0, left: 12.0),
+            child: Text(
+              ghanacardModel.idcardNumber,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700),
+            )),
+        const SizedBox(
+          width: 60,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                ghanacardModel.documentNumber,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+
+    final cardline4 = Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0, left: 12.0),
+          child: Text(
+            ghanacardModel.placeOfIssuance,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700),
+          ),
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                ghanacardModel.expDate,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        ),
+      ],
     );
 
     return Container(
@@ -69,9 +194,10 @@ class GhanaCardFrontList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               cardLogo,
-              const GhanaCardChip(),
-              cardValidThru,
-              ghanacardOwner,
+              cardline1,
+              cardline2,
+              cardline3,
+              cardline4
             ],
           ),
         ));

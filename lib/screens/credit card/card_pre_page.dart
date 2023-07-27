@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pera/screens/homepage/home.dart';
 
 import '../../blocs/bloc_provider.dart';
 import '../../blocs/card/card_bloc.dart';
+import '../homepage/credit_card_home.dart';
 import 'widgets/card_front.dart';
 
 class CardPre extends StatefulWidget {
@@ -37,8 +37,8 @@ class _CardPre extends State<CardPre> with TickerProviderStateMixin {
     opacityAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         bloc?.saveCard();
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Home()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const CreditCardHome()));
       }
     });
 

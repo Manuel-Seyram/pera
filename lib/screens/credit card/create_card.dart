@@ -225,7 +225,7 @@ class _CardCreate extends State<CardCreate> {
                         bloc: bloc,
                         child: const CardPre(),
                       );
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => blocProviderCardWallet));
